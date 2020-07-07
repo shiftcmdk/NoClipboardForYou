@@ -46,6 +46,10 @@ int main(int argc, char **argv, char **envp) {
     NSURL *plistURL = [NSURL fileURLWithPath:@"/Library/MobileSubstrate/DynamicLibraries/NoClipboardForYou.plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL:plistURL];
 
+    if (!dict) {
+        dict = [NSDictionary dictionary];
+    }
+
     NSMutableArray *bundlesArray;
 
     id filter = dict[@"Filter"];
@@ -77,7 +81,7 @@ int main(int argc, char **argv, char **envp) {
 
     newFilterDict = @{
         @"Filter": @{
-            @"Bundles": bundlesArray
+            @"Bundles": [[NSSet setWithArray:bundlesArray] allObjects]
         }
     };
 

@@ -184,6 +184,12 @@
         posix_spawn(&pid, "/usr/bin/chfilter", NULL, NULL, (char* const*)args, NULL);
     
         waitpid(pid, &status, WEXITED);
+
+        if (on) {
+            [self.enabledApps addObject:[self.apps objectAtIndex:indexPath.row].bundleID];
+        } else {
+            [self.enabledApps removeObject:[self.apps objectAtIndex:indexPath.row].bundleID];
+        }
     }
 }
 
