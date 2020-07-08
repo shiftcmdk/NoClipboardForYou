@@ -1,5 +1,7 @@
 #!/bin/sh
 
-echo "backing up filter file"
+if [ -e /Library/MobileSubstrate/DynamicLibraries/NoClipboardForYou.plist ]; then
+    echo "backing up filter file"
 
-mv /Library/MobileSubstrate/DynamicLibraries/NoClipboardForYou.plist /Library/MobileSubstrate/DynamicLibraries/NoClipboardForYou.plist.bak
+    mv /Library/MobileSubstrate/DynamicLibraries/NoClipboardForYou.plist /Library/MobileSubstrate/DynamicLibraries/NoClipboardForYou.plist.bak
+fi
